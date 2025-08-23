@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+    scrollbar-color: var(--color-accent) transparent;
+}
+
+@font-face {
+    font-family: 'Brooklyn';
+    src: url('../fonts/Brooklyn.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BrooklynStencil';
+    src: url('../fonts/BrooklynStencil.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Copernicus';
+    src: url('../fonts/Copernicus.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'StyreneB';
+    src: url('../fonts/StyreneB.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mars';
+    src: url('../fonts/Mars.woff2') format('woff2');
+    font-style: normal;
+    font-display: swap;
+}
+
+@property --blur-intensity {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 8px;
+}
+
+::view-transition-group(root) {
+    animation-duration: 750ms;
+}
+
+::view-transition-new(root) {
+    animation: circle-in 750ms;
+}
+
+@keyframes circle-in {
+    from {
+        clip-path: circle(0% at 50% 0%);
+    }
+    to {
+        clip-path: circle(100% at 50% 0%);
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@theme {
+
+    /* Base */
+
+    --color-dark-bg: #0D1117;
+    --color-dark-bg-secondary: #1C2128;
+    --color-dark-border: #30363D;
+    --color-dark-text: #E6EDF3;
+    --color-dark-text-secondary: #8B949E;
+
+    --color-light-bg: #F9FAFB;
+    --color-light-bg-secondary: #FFFFFF;
+    --color-light-border: #E5E7EB;
+    --color-light-text: #111827;
+    --color-light-text-secondary: #6B7280;
+
+    /* Accent */
+
+    --color-accent: #4F46E5;
+
+    --color-dark-accent-hover: #6366F1;
+    --color-dark-accent-success: #10B981;
+    --color-dark-accent-warning: #F59E0B;
+    --color-dark-accent-error: #EF4444;
+
+    --color-light-accent-hover: #4338CA;
+    --color-light-accent-success: #059669;
+    --color-light-accent-warning: #D97706;
+    --color-light-accent-error: #DC2626;
+
+    /* Shadows */
+
+    --shadow-light-sm: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-light-md: 0 4px 6px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-light-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+    
+    --shadow-dark-sm: 0 1px 2px rgba(255, 255, 255, 0.06), 0 1px 3px rgba(255, 255, 255, 0.1);
+    --shadow-dark-md: 0 4px 6px rgba(255, 255, 255, 0.08), 0 2px 4px rgba(255, 255, 255, 0.06);
+    --shadow-dark-lg: 0 10px 15px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(255, 255, 255, 0.08);
+
+    --shadow-glow-sm: 0 0 calc(var(--blur-intensity) * 1) rgba(79, 70, 229, 0.7);
+    --shadow-glow-md: 0 0 calc(var(--blur-intensity) * 2) rgba(79, 70, 229, 0.7);
+    --shadow-glow-lg: 0 0 calc(var(--blur-intensity) * 3) rgba(79, 70, 229, 0.7);
+
+    /* Breakpoints */
+
+    --breakpoint-custom: 500px;
+    --breakpoint-mini: 380px;
+
+    /* Fonts */
+
+    --font-brooklyn: 'Brooklyn', "Avenir Next", "Proxima Nova", "Segoe UI", sans-serif;
+    --font-brooklyn-stencil: 'BrooklynStencil', "Avenir Next", "Segoe UI", sans-serif;
+    --font-copernicus: 'Copernicus', "Garamond", "Times New Roman", serif;
+    --font-styrene-b: 'StyreneB', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-mars: 'Mars', "Avenir Next", "Segoe UI", sans-serif;
+
+}
+
+@utility current-theme {
+    @apply flex justify-center items-start gap-x-1 cursor-pointer px-4 py-2
+    bg-light-bg-secondary dark:bg-dark-bg-secondary border-2 rounded-full border-light-border dark:border-dark-border
+    active:scale-85 hover:shadow-light-md dark:hover:shadow-dark-md transition-all duration-75;
+
+    & span:nth-child(2) {
+        @apply hidden custom:inline-block;
+    }
+
+    & * {
+        @apply pointer-events-none;
+    }
+}
+
+@utility themes-dropdown {
+    @apply absolute flex-col justify-center items-start bg-light-bg-secondary dark:bg-dark-bg-secondary p-2 rounded-md border
+    border-light-border dark:border-dark-border shadow-light-md dark:shadow-dark-md transition-all transition-discrete starting:opacity-50
+    starting:-translate-y-2;
+}
+
+@utility theme-mode {
+    @apply flex justify-start items-center gap-x-1 py-2 px-4 rounded-md w-full cursor-pointer transition-all hover:bg-dark-bg hover:text-dark-text dark:hover:bg-light-bg dark:hover:text-light-text;
+
+    & * {
+        @apply pointer-events-none;
+    }
+}
+
+@utility typewriter {
+    @apply font-copernicus min-h-lh text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 text-transparent
+    bg-clip-text bg-linear-to-r from-accent to-cyan-400 text-center;
+}
+
+@utility default-prompt {
+    @apply flex flex-col items-start max-w-50 h-50 custom:h-42 bg-light-bg-secondary dark:bg-dark-bg-secondary border
+    border-light-border dark:border-dark-border p-4 rounded-2xl shadow-light-md dark:shadow-dark-md
+    hover:border-accent hover:shadow-glow-md transition cursor-pointer;
+
+    & * {
+        @apply pointer-events-none;
+    }
+}
+
+@utility default-prompt-icon {
+    @apply flex justify-center items-center size-10 rounded-md bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border
+    text-accent mb-4;
+}
+
+@utility default-prompt-text {
+    @apply text-sm text-light-text-secondary dark:text-dark-text-secondary w-full text-pretty mt-2 text-start;
+}
+
+@utility prompt {
+    @apply w-full max-h-64 field-sizing-content outline-none resize-none rounded-lg placeholder:text-light-text-secondary/80
+    dark:placeholder:text-dark-text-secondary/80 p-4;
+}
+
+@utility model {
+    @apply flex justify-start items-center gap-x-1 px-3 py-2 w-full rounded-md cursor-pointer transition-all hover:bg-light-bg
+    dark:hover:bg-dark-bg text-nowrap;
+
+    & * {
+        @apply pointer-events-none;
+    }
+}
+
+@utility models-menu {
+    @apply flex-col shrink-0 items-center rounded-xl absolute left-0 md:left-auto bottom-14 p-3 gap-y-2 bg-light-bg-secondary dark:bg-dark-bg-secondary
+    z-30 border border-light-border dark:border-dark-border shadow-light-md dark:shadow-dark-md transition-all transition-discrete starting:opacity-50
+    starting:translate-y-2;
+}
