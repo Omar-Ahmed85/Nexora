@@ -177,6 +177,10 @@ html {
     border-light-border dark:border-dark-border p-4 rounded-2xl shadow-light-md dark:shadow-dark-md
     hover:border-accent hover:shadow-glow-md transition cursor-pointer;
 
+    & h3 {
+        @apply text-sm custom:text-base text-start;
+    }
+
     & * {
         @apply pointer-events-none;
     }
@@ -201,12 +205,12 @@ html {
     dark:hover:bg-dark-bg text-nowrap;
 
     & * {
-        @apply pointer-events-none;
+        @apply pointer-events-none!;
     }
 }
 
 @utility models-menu {
-    @apply flex-col shrink-0 items-center rounded-xl absolute left-0 md:left-auto bottom-14 p-3 gap-y-2 bg-light-bg-secondary dark:bg-dark-bg-secondary
+    @apply flex-col shrink-0 items-center rounded-xl absolute left-0 md:left-auto bottom-14 p-2.5 gap-y-2 bg-light-bg-secondary dark:bg-dark-bg-secondary
     z-30 border border-light-border dark:border-dark-border shadow-light-md dark:shadow-dark-md transition-all transition-discrete starting:opacity-50
     starting:translate-y-2;
 }
