@@ -7,7 +7,7 @@
 	},
 	"tasks": {
 		"start": "deno serve -A --env --watch src/server/server.ts",
-		"dev": "vite --host",
+		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview"
 	},

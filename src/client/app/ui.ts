@@ -129,7 +129,7 @@ function wait(ms: number) {
 
 class Typewriter {
 
-    public timeout: number | null = null;
+    public timeout: unknown | null = null;
 
     constructor(private element: HTMLElement, private speed: number, private sentences: string[]) {}
 
@@ -173,16 +173,16 @@ class Typewriter {
 
             content.appendChild(blinkerElement);
 
-            this.timeout = setTimeout(tick, isDeleting ? this.speed / 2 : this.speed);
+            this.timeout = setTimeout(requestAnimationFrame, isDeleting ? this.speed / 2 : this.speed, tick);
         }
 
-        tick();
+        requestAnimationFrame(tick);
 
     }
 
     clear() {
         if (this.timeout) {
-            clearTimeout(this.timeout);
+            clearTimeout(this.timeout as number);
         }
         this.timeout = null;
     }
