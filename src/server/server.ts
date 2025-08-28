@@ -1,7 +1,7 @@
 import { Hono } from '@hono/hono';
 import { serveStatic } from '@hono/hono/deno';
 
-import router from './routes/mainRoute.ts';
+import chat from './routes/chatRoute.ts';
 import { StatusCodes } from './services/main.ts';
 
 const app = new Hono();
@@ -10,7 +10,7 @@ app.use('/', serveStatic({ path: './dist/index.html' }));
 app.use('/logo.svg', serveStatic({ path: './dist/logo.svg' }));
 app.use('/assets/*', serveStatic({ root: './dist/'}));
 
-app.route('/api', router);
+app.route('/chat', chat);
 
 app.notFound(async (ctx) => {
 	const fallback = await Deno.readTextFile('./dist/fallback.html');
