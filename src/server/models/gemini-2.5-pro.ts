@@ -1,8 +1,15 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
 
-export default function runChat(messages: ModelMessage[]) {
-    const result = streamText({
-        model: 'google/gemini-2.5-pro',
+const google = createGoogleGenerativeAI({
+    apiKey: Deno.env.get('GOOGLE_API_KEY')
+});
+
+export default function runModel(messages: ModelMessage[]) {
+    const model = google('gemini-2.5-pro');
+
+    const response = streamText({
+        model,
         messages,
         experimental_transform: smoothStream(),
         onError: ({ error }) => {
@@ -10,5 +17,5 @@ export default function runChat(messages: ModelMessage[]) {
         }
     });
 
-    return result.toTextStreamResponse();
+    return response.toTextStreamResponse();
 }

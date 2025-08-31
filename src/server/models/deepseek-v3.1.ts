@@ -1,14 +1,16 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
-import { createDeepSeek } from '@ai-sdk/deepseek';
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 
-const deepseek = createDeepSeek({
-    apiKey: Deno.env.get('DEEPSEEK_API_KEY')
+const nim = createOpenAICompatible({
+    name: 'nim',
+    apiKey: Deno.env.get('NVIDIA_API_KEY'),
+    baseURL: 'https://integrate.api.nvidia.com/v1'
 });
 
-export default function runChat(messages: ModelMessage[]) {
-    const model = deepseek('deepseek-chat');
+export default function runModel(messages: ModelMessage[]) {
+    const model = nim('deepseek-ai/deepseek-v3.1');
 
-    const result = streamText({
+    const response = streamText({
         model,
         messages,
         experimental_transform: smoothStream(),
@@ -17,5 +19,5 @@ export default function runChat(messages: ModelMessage[]) {
         }
     });
 
-    return result.toTextStreamResponse();
+    return response.toTextStreamResponse();
 }

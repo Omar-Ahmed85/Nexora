@@ -2,7 +2,7 @@ import { streamText, ModelMessage, smoothStream } from 'ai';
 
 export default function runModel(messages: ModelMessage[]) {
     const response = streamText({
-        model: 'openai/gpt-5',
+        model: 'anthropic/claude-3.5-haiku',
         messages,
         experimental_transform: smoothStream(),
         onError: ({ error }) => {

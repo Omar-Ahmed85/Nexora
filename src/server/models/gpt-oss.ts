@@ -1,14 +1,16 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
-import { createGroq } from '@ai-sdk/groq';
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 
-const groq = createGroq({
-    apiKey: Deno.env.get('GROQ_API_KEY')
+const nim = createOpenAICompatible({
+    name: 'nim',
+    apiKey: Deno.env.get('NVIDIA_API_KEY'),
+    baseURL: 'https://integrate.api.nvidia.com/v1'
 });
 
-export default function runChat(messages: ModelMessage[]) {
-    const model = groq('openai/gpt-oss-120b');
+export default function runModel(messages: ModelMessage[]) {
+    const model = nim('openai/gpt-oss-120b');
 
-    const result = streamText({
+    const response = streamText({
         model,
         messages,
         experimental_transform: smoothStream(),
@@ -17,5 +19,5 @@ export default function runChat(messages: ModelMessage[]) {
         }
     });
 
-    return result.toTextStreamResponse();
+    return response.toTextStreamResponse();
 }
