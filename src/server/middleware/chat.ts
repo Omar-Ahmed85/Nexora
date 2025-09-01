@@ -1,7 +1,7 @@
 import { Context } from '@hono/hono';
 
-import { ChatRequest } from '../../types/chat.ts';
-import { StatusCodes, errorHandler, successHandler, routeToModel, availableModels } from '../services/main.ts';
+import { ChatRequest, ModelResponse } from '../../types/chat.ts';
+import { StatusCodes, errorHandler, routeToModel, availableModels } from '../services/main.ts';
 
 export default async function chat(ctx: Context) {
     try {
@@ -15,11 +15,14 @@ export default async function chat(ctx: Context) {
         if (availableModels.includes(model) === false) {
             return errorHandler(ctx, 'Model Not Found', StatusCodes.NOT_FOUND);
         }
-    
-        const data: Response = await routeToModel(model, messages);
-        const response = await data.text();
-        
-        return successHandler(ctx, { response }, StatusCodes.OK);
+
+        const res: ModelResponse = await routeToModel(model, messages);
+
+        if (res.error) {
+            return errorHandler(ctx, res.error.message, StatusCodes.INTERNAL_SERVER_ERROR);
+        }
+
+        return res.response;
 
     } catch (_error) {
         return errorHandler(ctx, 'Error Processing Request', StatusCodes.INTERNAL_SERVER_ERROR);

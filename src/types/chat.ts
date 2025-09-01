@@ -6,3 +6,8 @@ export interface ChatRequest {
     model: string;
     messages: ModelMessage[];
 };
+
+export interface ModelResponse {
+    response?: Response;
+    error?: Error;
+}

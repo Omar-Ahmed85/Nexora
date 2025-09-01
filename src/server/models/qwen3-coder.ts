@@ -1,21 +1,29 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 
+import { ModelResponse } from '../../types/chat.ts';
+
 const openRouter = createOpenRouter({
     apiKey: Deno.env.get('OPENROUTER_API_KEY')
 });
 
-export default function runModel(messages: ModelMessage[]) {
-    const model = openRouter('qwen/qwen3-coder:free');
+export default function runModel(messages: ModelMessage[]): ModelResponse {
+    try {
+        const model = openRouter('qwen/qwen3-coder:free');
 
-    const response = streamText({
-        model,
-        messages,
-        experimental_transform: smoothStream(),
-        onError: ({ error }) => {
-            console.error(error);
+        const response = streamText({
+            model,
+            messages,
+            experimental_transform: smoothStream()
+        });
+
+        return {
+            response: response.toTextStreamResponse()
         }
-    });
 
-    return response.toTextStreamResponse();
+    } catch (error) {
+        return {
+            error: error as Error
+        }
+    }
 }
