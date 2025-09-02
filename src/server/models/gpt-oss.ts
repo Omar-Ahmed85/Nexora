@@ -16,7 +16,8 @@ export default function runModel(messages: ModelMessage[]): ModelResponse {
         const response = streamText({
             model,
             messages,
-            experimental_transform: smoothStream()
+            experimental_transform: smoothStream(),
+            maxOutputTokens: 2048
         });
 
         return {

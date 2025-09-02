@@ -6,7 +6,8 @@ export default function runModel(messages: ModelMessage[]): ModelResponse {
         const response = streamText({
             model: 'anthropic/claude-3.5-haiku',
             messages,
-            experimental_transform: smoothStream()
+            experimental_transform: smoothStream(),
+            maxOutputTokens: 1024
         });
 
         return {

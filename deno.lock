@@ -12,6 +12,7 @@
     "npm:ai@^5.0.15": "5.0.28_zod@4.1.5",
     "npm:create-hono@latest": "0.19.2",
     "npm:create-vite@latest": "7.1.1",
+    "npm:marked@^16.2.1": "16.2.1",
     "npm:tailwindcss@^4.1.12": "4.1.12",
     "npm:typescript@~5.8.3": "5.8.3",
     "npm:vite@^7.1.2": "7.1.2_picomatch@4.0.3_@types+node@24.2.0"
@@ -672,6 +673,10 @@
         "@jridgewell/sourcemap-codec"
       ]
     },
+    "marked@16.2.1": {
+      "integrity": "sha512-r3UrXED9lMlHF97jJByry90cwrZBBvZmjG1L68oYfuPMW+uDTnuMbyJDymCWwbTE+f+3LhpNDKfpR3a3saFyjA==",
+      "bin": true
+    },
     "minipass@7.1.2": {
       "integrity": "sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw=="
     },
@@ -823,6 +828,7 @@
         "npm:@openrouter/ai-sdk-provider@^1.1.2",
         "npm:@tailwindcss/vite@^4.1.12",
         "npm:ai@^5.0.15",
+        "npm:marked@^16.2.1",
         "npm:tailwindcss@^4.1.12",
         "npm:typescript@~5.8.3",
         "npm:vite@^7.1.2"

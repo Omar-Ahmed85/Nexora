@@ -7,22 +7,6 @@ html {
 }
 
 @font-face {
-    font-family: 'Brooklyn';
-    src: url('../fonts/Brooklyn.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'BrooklynStencil';
-    src: url('../fonts/BrooklynStencil.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'Copernicus';
     src: url('../fonts/Copernicus.woff2') format('woff2');
     font-weight: normal;
@@ -140,7 +124,7 @@ html {
 }
 
 @utility current-theme {
-    @apply flex justify-center items-start gap-x-1 cursor-pointer px-4 py-2
+    @apply flex justify-center items-center gap-x-1 cursor-pointer px-4 py-2
     bg-light-bg-secondary dark:bg-dark-bg-secondary border-2 rounded-full border-light-border dark:border-dark-border
     active:scale-85 hover:shadow-light-md dark:hover:shadow-dark-md transition-all duration-75;
 
@@ -213,4 +197,21 @@ html {
     @apply flex-col shrink-0 items-center rounded-xl absolute left-0 md:left-auto bottom-14 p-2.5 gap-y-2 bg-light-bg-secondary dark:bg-dark-bg-secondary
     z-30 border border-light-border dark:border-dark-border shadow-light-md dark:shadow-dark-md transition-all transition-discrete starting:opacity-50
     starting:translate-y-2;
+}
+
+@utility user-prompt {
+    @apply flex flex-col gap-y-4 justify-center items-center max-w-md w-fit p-4 ml-auto rounded-2xl rounded-tr-none bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border
+    dark:border-dark-border shadow-light-sm dark:shadow-dark-sm;
+
+    & > p {
+        @apply text-pretty;
+    }
+}
+
+@utility model-response {
+    @apply flex flex-col gap-y-4 justify-center items-start w-full p-4;
+
+    & > p {
+        @apply text-pretty;
+    }
 }
