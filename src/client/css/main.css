@@ -206,6 +206,10 @@ html {
     & > p {
         @apply text-pretty;
     }
+
+    & > * {
+        @apply flex flex-col gap-y-2 justify-start items-start;
+    }
 }
 
 @utility model-response {
@@ -213,5 +217,9 @@ html {
 
     & > p {
         @apply text-pretty;
+    }
+
+    & > * {
+        @apply flex flex-col gap-y-2 justify-start items-start;
     }
 }

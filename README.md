@@ -1,9 +1,8 @@
 # NEXORA - Your All-in-one AI Companion
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue.svg)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.1.2-purple.svg)](https://vitejs.dev/)
-[![Deno](https://img.shields.io/badge/Deno-1.x-green.svg)](https://deno.land/)
+[![Deno](https://img.shields.io/badge/Deno-2.4.5-green.svg)](https://deno.com/)
 
 NEXORA is a modern, full-stack AI chat application that provides a unified interface to multiple AI models. Built with TypeScript, Vite, and Deno, it offers a seamless experience for routing prompts to different AI providers with an elegant, responsive UI.
 
@@ -72,7 +71,7 @@ src/
 
 ### Prerequisites
 - [Deno](https://deno.land/) (latest version)
-- [Node.js](https://nodejs.org/) (18+ for development)
+- [Node.js](https://nodejs.org/) (v18+ for development)
 
 ### Setup
 
@@ -84,7 +83,7 @@ src/
 
 2. **Install dependencies**
    ```bash
-   npm install
+   deno install
    ```
 
 3. **Set up environment variables**
@@ -98,7 +97,7 @@ src/
 
 4. **Build the project**
    ```bash
-   npm run build
+   deno task build
    ```
 
 ## 🚀 Running the Application
@@ -106,25 +105,21 @@ src/
 ### Development Mode
 ```bash
 # Start the development server
-npm run dev
-
-# Or use Deno directly
 deno task dev
 ```
 
 ### Production Mode
 ```bash
 # Build and start production server
-npm run build
+deno task build
 deno task start
 ```
 
 ### Available Scripts
-- `npm run dev` - Start development server with Vite
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `deno task start` - Start Deno server
-- `deno task dev` - Start development server
+- `deno task build` - Build for production
+- `deno task preview` - Preview production build
+- `deno task start` - Start Hono server
+- `deno task dev` - Start development server with Vite
 
 ## 🔧 Configuration
 
@@ -197,7 +192,6 @@ TypeScript is configured in `tsconfig.json` with strict type checking and modern
 ### Code Style
 - TypeScript strict mode enabled
 - Consistent formatting with Deno formatter
-- Descriptive variable and function names
 - Comprehensive error handling
 
 ## 📱 Browser Support
@@ -214,10 +208,6 @@ TypeScript is configured in `tsconfig.json` with strict type checking and modern
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
