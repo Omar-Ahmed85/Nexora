@@ -207,7 +207,7 @@ html {
         @apply text-pretty;
     }
 
-    & > * {
+    & > :is(ol, ul) {
         @apply flex flex-col gap-y-2 justify-start items-start;
     }
 }
@@ -219,7 +219,7 @@ html {
         @apply text-pretty;
     }
 
-    & > * {
+    & > :is(ol, ul) {
         @apply flex flex-col gap-y-2 justify-start items-start;
     }
 }
