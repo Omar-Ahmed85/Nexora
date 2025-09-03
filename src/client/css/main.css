@@ -200,7 +200,7 @@ html {
 }
 
 @utility user-prompt {
-    @apply flex flex-col gap-y-4 justify-center items-center max-w-md w-fit p-4 ml-auto rounded-2xl rounded-tr-none bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border
+    @apply flex flex-col gap-y-6 justify-center items-center max-w-md w-fit p-4 ml-auto rounded-2xl rounded-tr-none bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border
     dark:border-dark-border shadow-light-sm dark:shadow-dark-sm;
 
     & > p {
@@ -208,18 +208,18 @@ html {
     }
 
     & :is(ol, ul) {
-        @apply flex flex-col gap-y-2 justify-start items-start;
+        @apply flex flex-col gap-y-3 justify-start items-start;
     }
 }
 
 @utility model-response {
-    @apply flex flex-col gap-y-4 justify-center items-start w-full p-4;
+    @apply flex flex-col gap-y-6 justify-center items-start w-full p-4;
 
     & > p {
         @apply text-pretty;
     }
 
     & :is(ol, ul) {
-        @apply flex flex-col gap-y-2 justify-start items-start;
+        @apply flex flex-col gap-y-3 justify-start items-start;
     }
 }
