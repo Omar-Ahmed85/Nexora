@@ -216,15 +216,15 @@ html {
     }
 
     & table {
-        @apply block max-w-full whitespace-nowrap p-4 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border
+        @apply block max-w-full whitespace-nowrap p-1 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border
         rounded-3xl;
 
         & :is(th, td) {
-            @apply p-4 border-y border-light-border dark:border-dark-border;
+            @apply p-4;
         }
 
         & td {
-            @apply text-sm;
+            @apply text-sm border-y border-light-border dark:border-dark-border;
         }
     }
 
@@ -249,15 +249,15 @@ html {
     }
 
     & table {
-        @apply block max-w-full whitespace-nowrap p-4 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border
+        @apply block max-w-full whitespace-nowrap p-1 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border
         rounded-3xl;
 
         & :is(th, td) {
-            @apply p-4 border-y border-light-border dark:border-dark-border;
+            @apply p-4;
         }
 
         & td {
-            @apply text-sm;
+            @apply text-sm border-y border-light-border dark:border-dark-border;
         }
     }
 
