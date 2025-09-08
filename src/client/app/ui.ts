@@ -253,9 +253,12 @@ const submitPromptElement = document.getElementById('submit-prompt') as HTMLElem
 
 submitPromptElement.addEventListener('click', submitPrompt);
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', async (e) => {
     if (!e.repeat && e.key == 'Enter') {
-        submitPromptElement.click();
+        await submitPrompt();
+        
+        const prompt = document.getElementById('prompt') as HTMLTextAreaElement;
+        prompt.value = '';
     }
 });
 

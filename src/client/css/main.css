@@ -203,7 +203,7 @@ html {
     @apply flex flex-col gap-y-6 justify-center items-center max-w-md w-fit p-4 ml-auto rounded-2xl rounded-tr-none bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border
     dark:border-dark-border shadow-light-sm dark:shadow-dark-sm;
 
-    & > p {
+    & p {
         @apply text-pretty;
     }
 
@@ -217,7 +217,7 @@ html {
 
     & table {
         @apply block max-w-full whitespace-nowrap p-1 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border
-        rounded-3xl;
+        rounded-xl;
 
         & :is(th, td) {
             @apply p-4;
@@ -229,14 +229,14 @@ html {
     }
 
     & pre:has(code) {
-        @apply p-4 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border rounded-3xl;
+        @apply p-4 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border rounded-xl;
     }
 }
 
 @utility model-response {
     @apply flex flex-col gap-y-6 justify-center items-start w-full p-4;
 
-    & > p {
+    & p {
         @apply text-pretty;
     }
 
@@ -250,10 +250,10 @@ html {
 
     & table {
         @apply block max-w-full whitespace-nowrap p-1 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border
-        rounded-3xl;
+        rounded-xl;
 
         & :is(th, td) {
-            @apply p-4;
+            @apply p-4 text-start;
         }
 
         & td {
@@ -262,6 +262,6 @@ html {
     }
 
     & pre:has(code) {
-        @apply p-4 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border rounded-3xl;
+        @apply p-4 bg-light-bg-secondary dark:bg-dark-bg-secondary border border-light-border dark:border-dark-border rounded-xl;
     }
 }
