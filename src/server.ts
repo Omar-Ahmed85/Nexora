@@ -1,8 +1,8 @@
 import { Hono } from '@hono/hono';
 import { serveStatic } from '@hono/hono/deno';
 
-import chat from './routes/chatRoute.ts';
-import { StatusCodes } from './services/main.ts';
+import chat from './features/main/api/routes/chatRoute.ts';
+import { StatusCodes } from './utils/main.ts';
 
 const app = new Hono();
 

@@ -1,5 +1,6 @@
 import { marked } from 'marked';
-import { runChat, type ModelMessageClone, type Role } from './main.ts';
+import { runChat } from './main.ts';
+import type { ModelMessageClone, Role } from '../../utils/types.ts';
 
 function updateTheme(theme: string) {
 	if (theme === 'system') {

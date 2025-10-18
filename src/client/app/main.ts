@@ -1,17 +1,6 @@
 import './ui.ts';
 import { updateNotification, handleModelResponse } from './ui.ts';
-
-export type Role = 'system' | 'user' | 'assistant';
-
-export interface ModelMessageClone {
-    role: Role,
-    content: string
-}
-
-interface ChatRequest {
-    model: string;
-    messages: ModelMessageClone[];
-};
+import type { Role, ChatRequest, ModelMessageClone } from '../../utils/types.ts';
 
 let counter = 0;
 

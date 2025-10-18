@@ -1,27 +1,28 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 
-import { ModelResponse } from '../../types/chat.ts';
+import { ModelResponse } from '../../../utils/types.ts';
 
-const google = createGoogleGenerativeAI({
-    apiKey: Deno.env.get('GOOGLE_API_KEY')
+const nim = createOpenAICompatible({
+    name: 'nim',
+    apiKey: Deno.env.get('NVIDIA_API_KEY'),
+    baseURL: 'https://integrate.api.nvidia.com/v1'
 });
 
 export default function runModel(messages: ModelMessage[]): ModelResponse {
     try {
-        const model = google('gemini-2.5-pro');
+        const model = nim('openai/gpt-oss-120b');
     
         const response = streamText({
             model,
             messages,
             experimental_transform: smoothStream(),
-            maxOutputTokens: 2048
+            maxOutputTokens: 4096
         });
 
         return {
             response: response.toTextStreamResponse()
         }
-        
     } catch (error) {
         return {
             error: error as Error

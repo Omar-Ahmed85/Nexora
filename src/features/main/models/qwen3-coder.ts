@@ -1,13 +1,21 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
-import { ModelResponse } from '../../types/chat.ts';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+
+import { ModelResponse } from '../../../utils/types.ts';
+
+const openRouter = createOpenRouter({
+    apiKey: Deno.env.get('OPENROUTER_API_KEY')
+});
 
 export default function runModel(messages: ModelMessage[]): ModelResponse {
     try {
+        const model = openRouter('qwen/qwen3-coder:free');
+
         const response = streamText({
-            model: 'anthropic/claude-3.5-haiku',
+            model,
             messages,
             experimental_transform: smoothStream(),
-            maxOutputTokens: 1024
+            maxOutputTokens: 4096
         });
 
         return {

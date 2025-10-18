@@ -1,7 +1,8 @@
 import { Context } from '@hono/hono';
 
-import { ChatRequest, ModelResponse } from '../../types/chat.ts';
-import { StatusCodes, errorHandler, routeToModel, availableModels } from '../services/main.ts';
+import { ChatRequest, ModelResponse } from '../../../../utils/types.ts';
+import { errorHandler, StatusCodes } from '../../../../utils/main.ts';
+import { routeToModel, availableModels } from '../../utils/modelHandler.ts';
 
 export default async function chat(ctx: Context) {
     try {

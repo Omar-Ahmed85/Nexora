@@ -1,7 +1,7 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@hono/hono@^4.9.2": "4.9.2",
+    "jsr:@hono/hono@^4.9.8": "4.9.8",
     "jsr:@std/assert@1": "1.0.13",
     "jsr:@std/internal@^1.0.6": "1.0.8",
     "npm:@ai-sdk/google@^2.0.11": "2.0.11_zod@4.1.5",
@@ -13,13 +13,14 @@
     "npm:create-hono@latest": "0.19.2",
     "npm:create-vite@latest": "7.1.1",
     "npm:marked@^16.2.1": "16.2.1",
+    "npm:node-appwrite@^20.2.1": "20.2.1",
     "npm:tailwindcss@^4.1.12": "4.1.12",
     "npm:typescript@~5.8.3": "5.8.3",
     "npm:vite@^7.1.2": "7.1.2_picomatch@4.0.3_@types+node@24.2.0"
   },
   "jsr": {
-    "@hono/hono@4.9.2": {
-      "integrity": "1a8ae7b0d9e4fecef440f991c604e032d5548dc313d1961073ac5d94809be52b"
+    "@hono/hono@4.9.8": {
+      "integrity": "908150f13e90181a051a3af3bf15203aff00190682afedfd38824d0cb9299a95"
     },
     "@std/assert@1.0.13": {
       "integrity": "ae0d31e41919b12c656c742b22522c32fb26ed0cba32975cb0de2a273cb68b29",
@@ -694,6 +695,15 @@
       "integrity": "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==",
       "bin": true
     },
+    "node-appwrite@20.2.1": {
+      "integrity": "sha512-RweIh+3RHjprsxhWaJzcQr/UDMBMsZCma50TIJ9t3onVgs5jAT9aqFnsMlaaC9QZn1sXpPUQV90W6uvtm64DnQ==",
+      "dependencies": [
+        "node-fetch-native-with-agent"
+      ]
+    },
+    "node-fetch-native-with-agent@1.7.2": {
+      "integrity": "sha512-5MaOOCuJEvcckoz7/tjdx1M6OusOY6Xc5f459IaruGStWnKzlI1qpNgaAwmn4LmFYcsSlj+jBMk84wmmRxfk5g=="
+    },
     "picocolors@1.1.1": {
       "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
     },
@@ -818,7 +828,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@hono/hono@^4.9.2",
+      "jsr:@hono/hono@^4.9.8",
       "jsr:@std/assert@1"
     ],
     "packageJson": {
@@ -829,6 +839,7 @@
         "npm:@tailwindcss/vite@^4.1.12",
         "npm:ai@^5.0.15",
         "npm:marked@^16.2.1",
+        "npm:node-appwrite@^20.2.1",
         "npm:tailwindcss@^4.1.12",
         "npm:typescript@~5.8.3",
         "npm:vite@^7.1.2"
