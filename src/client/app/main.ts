@@ -1,6 +1,6 @@
 import './ui.ts';
 import { updateNotification, handleModelResponse } from './ui.ts';
-import type { Role, ChatRequest, ModelMessageClone } from '../../utils/types.ts';
+import type { Role, ChatRequest, ModelMessageClone } from '@@utils/types.ts';
 
 let counter = 0;
 

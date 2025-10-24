@@ -1,7 +1,7 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 
-import { ModelResponse } from '../../../utils/types.ts';
+import { ModelResponse } from "@@utils/types.ts";
 
 const openRouter = createOpenRouter({
     apiKey: Deno.env.get('OPENROUTER_API_KEY')

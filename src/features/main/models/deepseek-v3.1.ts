@@ -1,7 +1,7 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 
-import { ModelResponse } from '../../../utils/types.ts';
+import { ModelResponse } from "@@utils/types.ts";
 
 const nim = createOpenAICompatible({
     name: 'nim',

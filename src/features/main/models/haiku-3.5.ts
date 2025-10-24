@@ -1,5 +1,5 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
-import { ModelResponse } from '../../../utils/types.ts';
+import { ModelResponse } from "@@utils/types.ts";
 
 export default function runModel(messages: ModelMessage[]): ModelResponse {
     try {

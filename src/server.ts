@@ -2,18 +2,21 @@ import { Hono } from '@hono/hono';
 import { serveStatic } from '@hono/hono/deno';
 
 import chat from './features/main/api/routes/chatRoute.ts';
-import { StatusCodes } from './utils/main.ts';
+import usersController from './features/users/api/controllers/controller.ts';
+
+import { StatusCodes } from '@@utils/main.ts';
 
 const app = new Hono();
 
-app.use('/', serveStatic({ path: './dist/index.html' }));
-app.use('/logo.svg', serveStatic({ path: './dist/logo.svg' }));
-app.use('/assets/*', serveStatic({ root: './dist/'}));
+app.use('/*', serveStatic({
+	root: './dist/'
+}));
 
 app.route('/chat', chat);
+app.route('/users', usersController);
 
-app.notFound(async (ctx) => {
-	const fallback = await Deno.readTextFile('./dist/fallback.html');
+const fallback = await Deno.readTextFile('./dist/fallback.html');
+app.notFound((ctx) => {
 	return ctx.html(fallback, StatusCodes.NOT_FOUND);
 });
 
