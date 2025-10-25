@@ -3,7 +3,8 @@
 		"lib": ["deno.ns", "dom"]
 	},
 	"tasks": {
-		"start": "deno task build && deno serve -A --env --watch src/server.ts",
+		"start:full": "deno task build && deno serve -A --env --watch src/server.ts",
+		"start:server": "deno serve -A --env --watch src/server.ts",
 		"dev": "vite",
 		"build": "tsc && vite build --emptyOutDir",
 		"preview": "vite preview"

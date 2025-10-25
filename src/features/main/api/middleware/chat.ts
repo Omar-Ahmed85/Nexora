@@ -9,7 +9,7 @@ export default async function chat(ctx: Context) {
     // Parse Request
     const [error, data] = await tryCatch(ctx.req.json<ChatRequest>());
     if (error || !data) {
-        return errorHandler(ctx, 'Error Processing Request -- (Error getting request data)', StatusCodes.INTERNAL_SERVER_ERROR);
+        return errorHandler(ctx, 'Error Processing Request. Please try a different model', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 
     // Validate Request
@@ -31,20 +31,20 @@ function validateRequest({ model, messages }: ChatRequest): [boolean, StatusCode
         return [false, StatusCodes.BAD_REQUEST, 'Invalid Request -- (Please provide both the model and the messages)'];
     }
     if (!availableModels.includes(model)) {
-        return [false, StatusCodes.NOT_FOUND, 'AI model not found'];
+        return [false, StatusCodes.NOT_FOUND, 'AI model not found. Please try a different model'];
     }
     return [true];
 }
 
 async function handleRequest({ model, messages }: ChatRequest): Promise<[boolean, string | Response]> {
     const [err, res] = await tryCatch(routeToModel(model, messages));
-    if (err || !res) {
-        return [false, 'Error Processing Request -- (Error routing to model)'];
+    if (err || Error.isError(res)) {
+        return [false, 'Error Processing Request. Please try a different model'];
     }
     
-    const { response, error: modelError } = res as ModelResponse;
-    if (modelError) {
-        return [false, modelError?.message];
+    const { response, error } = res as ModelResponse;
+    if (error) {
+        return [false, error?.message];
     }
     return [true, response!];
 }
