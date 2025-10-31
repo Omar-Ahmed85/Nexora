@@ -1,19 +1,16 @@
 import { streamText, ModelMessage, smoothStream } from 'ai';
-import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 
-import { ModelResponse } from '../../types/chat.ts';
+import { ModelResponse } from "@@utils/types.ts";
 
-const nim = createOpenAICompatible({
-    name: 'nim',
-    apiKey: Deno.env.get('NVIDIA_API_KEY'),
-    baseURL: 'https://integrate.api.nvidia.com/v1'
+const openRouter = createOpenRouter({
+    apiKey: Deno.env.get('OPENROUTER_API_KEY')
 });
 
 export default function runModel(messages: ModelMessage[]): ModelResponse {
-
     try {
-        const model = nim('deepseek-ai/deepseek-v3.1');
-    
+        const model = openRouter('qwen/qwen3-coder:free');
+
         const response = streamText({
             model,
             messages,
