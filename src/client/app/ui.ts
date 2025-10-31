@@ -250,14 +250,12 @@ defaultPrompts.addEventListener('click', (e) => {
 const submitPromptElement = document.getElementById('submit-prompt') as HTMLFormElement;
 
 submitPromptElement.addEventListener('submit', submitPrompt);
-document.addEventListener('keydown', async (event) => {
-    const prompt = document.getElementById('prompt') as HTMLTextAreaElement;
-
-    if (event.key === 'Enter' && prompt.value.trim()) {
+const prompt = document.getElementById('prompt') as HTMLTextAreaElement;
+prompt.addEventListener('keydown', async (event) => {
+    if (event.key === 'Enter' && !event.shiftKey && prompt.value.trim()) {
         await submitPrompt(event);
     }
 });
-
 async function submitPrompt(event: Event) {
     event.preventDefault();
 
