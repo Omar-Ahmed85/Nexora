@@ -5,7 +5,7 @@ import { ChatRequest, ModelResponse } from '@@utils/types.ts';
 import { errorHandler, StatusCodes, tryCatch } from '@@utils/main.ts';
 import { routeToModel, availableModels } from '../../utils/modelHandler.ts';
 
-export default async function chat(ctx: Context) {
+export default async function chat(ctx: Context): Promise<Response> {
     // Parse Request
     const [error, data] = await tryCatch(ctx.req.json<ChatRequest>());
     if (error || !data) {
@@ -23,7 +23,7 @@ export default async function chat(ctx: Context) {
     if (!isOk) {
         return errorHandler(ctx, response as string, StatusCodes.INTERNAL_SERVER_ERROR);
     }
-    return response;
+    return response as Response;
 }
 
 function validateRequest({ model, messages }: ChatRequest): [boolean, StatusCode?, string?] {

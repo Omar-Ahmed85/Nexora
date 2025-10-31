@@ -244,34 +244,30 @@ defaultPrompts.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
 
     if (!target.classList.contains('default-prompt')) return;
-
-    // @ts-ignore: Annoying with no solution.
     prompt.value = target.getAttribute('data-value')!;
 });
 
+const submitPromptElement = document.getElementById('submit-prompt') as HTMLFormElement;
 
-const submitPromptElement = document.getElementById('submit-prompt') as HTMLElement;
+submitPromptElement.addEventListener('submit', submitPrompt);
+document.addEventListener('keydown', async (event) => {
+    const prompt = document.getElementById('prompt') as HTMLTextAreaElement;
 
-submitPromptElement.addEventListener('click', submitPrompt);
-
-document.addEventListener('keydown', async (e) => {
-    if (!e.repeat && e.key == 'Enter') {
-        await submitPrompt();
-        
-        const prompt = document.getElementById('prompt') as HTMLTextAreaElement;
-        prompt.value = '';
+    if (event.key === 'Enter' && prompt.value.trim()) {
+        await submitPrompt(event);
     }
 });
 
-async function submitPrompt() {
+async function submitPrompt(event: Event) {
+    event.preventDefault();
+
+    const formData = new FormData(submitPromptElement);
     const prompt = document.getElementById('prompt') as HTMLTextAreaElement;
     const model = document.getElementById('current-model')?.getAttribute('data-model');
     const introElement = document.getElementById('intro') as HTMLElement;
     const chatElement = document.getElementById('chat') as HTMLElement;
 
-    if (!model || !prompt.value.trim()) return;
-
-    const promptValue = prompt.value.trim();
+    if (!model || !formData.get('prompt')) return;
 
     if (introElement) {
         introElement.remove();
@@ -279,10 +275,11 @@ async function submitPrompt() {
 
     chatElement.classList.remove('hidden');
     chatElement.classList.add('flex');
-    
+
     prompt.value = '';
-    handleUserPrompt(promptValue);
-    await runChat(model, promptValue);
+
+    handleUserPrompt(formData.get('prompt') as string);
+    await runChat(model, formData.get('prompt') as string);
 }
 
 function handleUserPrompt(prompt: string) {
