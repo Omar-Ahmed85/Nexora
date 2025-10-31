@@ -9,17 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ai-sdk/google": "^2.0.11",
-    "@ai-sdk/openai-compatible": "^1.0.13",
-    "@openrouter/ai-sdk-provider": "^1.1.2",
-    "@tailwindcss/vite": "^4.1.12",
-    "ai": "^5.0.15",
-    "marked": "^16.2.1",
+    "@ai-sdk/google": "^2.0.26",
+    "@ai-sdk/openai-compatible": "^1.0.25",
+    "@openrouter/ai-sdk-provider": "^1.2.0",
+    "@tailwindcss/vite": "^4.1.16",
+    "ai": "^5.0.86",
+    "marked": "^16.4.1",
     "node-appwrite": "^20.2.1",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
     "typescript": "~5.8.3",
-    "vite": "^7.1.2"
+    "vite": "^7.1.12"
   }
 }
