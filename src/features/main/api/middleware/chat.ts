@@ -38,7 +38,7 @@ function validateRequest({ model, messages }: ChatRequest): [boolean, StatusCode
 
 async function handleRequest({ model, messages }: ChatRequest): Promise<[boolean, string | Response]> {
     const [err, res] = await tryCatch(routeToModel(model, messages));
-    if (err || Error.isError(res)) {
+    if (err || res instanceof Error) {
         return [false, 'Error Processing Request. Please try a different model'];
     }
     
