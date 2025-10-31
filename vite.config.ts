@@ -20,7 +20,7 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			'@@utils': import.meta.resolve(__dirname + 'src/utils'),
+			'@@utils': import.meta.resolve(__dirname + '/src/utils'),
 		},
 	},
 });
