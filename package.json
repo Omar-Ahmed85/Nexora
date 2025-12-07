@@ -15,7 +15,6 @@
     "@tailwindcss/vite": "^4.1.16",
     "ai": "^5.0.86",
     "marked": "^16.4.1",
-    "node-appwrite": "^20.2.1",
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
